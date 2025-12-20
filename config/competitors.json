@@ -1,0 +1,29 @@
+{
+  "competitors": [
+    {
+      "name": "Example.com - General Test",
+      "url": "https://example.com",
+      "selectors": ["h1", "p", "div"],
+      "check_interval_minutes": 2,
+      "enabled": true
+    },
+    {
+      "name": "Python.org - Event Calendar",
+      "url": "https://www.python.org/events/",
+      "selectors": [".list-recent-events", ".shrubbery"],
+      "check_interval_minutes": 2,
+      "enabled": true
+    }
+  ],
+  "default_settings": {
+    "check_interval_minutes": 2,
+    "timeout_seconds": 30,
+    "use_javascript_rendering": true,
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+  },
+  "alert_settings": {
+    "console_enabled": true,
+    "slack_enabled": false,
+    "impact_threshold": 5
+  }
+}

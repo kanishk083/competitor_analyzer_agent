@@ -1,0 +1,27 @@
+# Environment variables
+.env
+.env.local
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Database
+*.db
+*.sqlite3
+data/
+
+# Docker
+docker-compose.override.yml
+
+# IDEs
+.vscode/
+.idea/

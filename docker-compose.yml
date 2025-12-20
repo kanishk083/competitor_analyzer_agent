@@ -1,0 +1,70 @@
+version: "3.9"
+
+services:
+  # ============================================
+  # Change Detection Service - Web Monitoring
+  # ============================================
+  changedetection:
+    image: ghcr.io/dgtlmoon/changedetection.io:latest
+    container_name: changedetection
+    restart: unless-stopped
+    ports:
+      - "5000:5000"
+    volumes:
+      - changedetection-data:/datastore
+    environment:
+      - PLAYWRIGHT_DRIVER_URL=ws://playwright-chrome:3000
+      - BASE_URL=http://localhost:5000
+      # Webhook will be configured via UI to point to host machine
+    depends_on:
+      - playwright-chrome
+    networks:
+      - competitor-network
+
+  # ============================================
+  # Browserless Chrome - Headless Browser for JS Rendering
+  # ============================================
+  playwright-chrome:
+    image: browserless/chrome:latest
+    container_name: playwright-chrome
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - SCREEN_WIDTH=1920
+      - SCREEN_HEIGHT=1080
+      - SCREEN_DEPTH=24
+      - ENABLE_DEBUGGER=false
+      - PREBOOT_CHROME=true
+      - CONNECTION_TIMEOUT=300000
+      - MAX_CONCURRENT_SESSIONS=10
+      - CHROME_REFRESH_TIME=600000
+      - DEFAULT_BLOCK_ADS=true
+      - DEFAULT_STEALTH=true
+    networks:
+      - competitor-network
+
+  # ============================================
+  # FastAPI Webhook Listener (Optional - can run locally)
+  # ============================================
+  # Uncomment to run the listener in Docker
+  # webhook-listener:
+  #   build: .
+  #   container_name: webhook-listener
+  #   restart: unless-stopped
+  #   ports:
+  #     - "8000:8000"
+  #   volumes:
+  #     - ./data:/app/data
+  #   env_file:
+  #     - .env
+  #   networks:
+  #     - competitor-network
+
+volumes:
+  changedetection-data:
+    driver: local
+
+networks:
+  competitor-network:
+    driver: bridge
