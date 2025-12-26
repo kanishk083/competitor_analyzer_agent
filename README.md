@@ -2,7 +2,7 @@
 
 A powerful AI-powered competitor monitoring system that tracks changes on competitor websites and provides intelligent analysis using LLM.
 
-## 🎯 Features
+## Features
 
 - **Real-time Monitoring**: Uses changedetection.io for webhook-based change detection
 - **Differential Analysis**: SHA-256 hash comparison to minimize LLM API costs
@@ -11,7 +11,7 @@ A powerful AI-powered competitor monitoring system that tracks changes on compet
 - **SWOT Analysis**: Generate strategic SWOT analysis from monitoring data
 - **CSS Selector Targeting**: Focus on specific page elements for precise monitoring
 
-## 🏗️ Architecture
+## Architecture
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
@@ -37,7 +37,7 @@ A powerful AI-powered competitor monitoring system that tracks changes on compet
 └─────────────────────────────────────────────────────────────┘
 ```
 
-## 🚀 Quick Start
+## Quick Start
 
 ### 1. Install Dependencies
 
@@ -88,7 +88,7 @@ uvicorn app:app --host 0.0.0.0 --port 8000 --reload
 3. Go to Settings → Notifications
 4. Add webhook: `http://host.docker.internal:8000/webhook/change`
 
-## 📡 API Endpoints
+## API Endpoints
 
 | Method | Endpoint | Description |
 |--------|----------|-------------|
@@ -117,7 +117,7 @@ curl -X POST http://localhost:8000/webhook/change \
   }'
 ```
 
-## 📊 Change Classification
+## Change Classification
 
 The LLM analyzes each change and provides:
 
@@ -150,7 +150,7 @@ Configure competitors in `config/competitors.json`:
 }
 ```
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 competitor_analyzer_agent/
@@ -178,7 +178,7 @@ competitor_analyzer_agent/
     └── alerting.py        # Console/Slack alerts
 ```
 
-## 🔐 Environment Variables
+## Environment Variables
 
 | Variable | Required | Description |
 |----------|----------|-------------|
@@ -188,6 +188,6 @@ competitor_analyzer_agent/
 | `DATABASE_PATH` | No | SQLite database path |
 | `WEBHOOK_SECRET` | No | Secret for webhook validation |
 
-## 📝 License
+##  License
 
 MIT License
