@@ -126,7 +126,7 @@ The LLM analyzes each change and provides:
 - **Summary**: What changed and why it matters
 - **Counter-Strategy**: Actionable recommendation for Sales team
 
-## 🔧 Scheduled Monitoring
+##  Scheduled Monitoring
 
 Alternative to webhooks - run periodic checks:
 
